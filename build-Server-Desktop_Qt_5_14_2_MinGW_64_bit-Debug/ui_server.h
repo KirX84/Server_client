@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -23,6 +24,7 @@ class Ui_Server
 {
 public:
     QWidget *centralwidget;
+    QGridLayout *gridLayout;
     QLabel *ImageView;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -34,9 +36,13 @@ public:
         Server->resize(800, 600);
         centralwidget = new QWidget(Server);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         ImageView = new QLabel(centralwidget);
         ImageView->setObjectName(QString::fromUtf8("ImageView"));
-        ImageView->setGeometry(QRect(20, 10, 761, 481));
+
+        gridLayout->addWidget(ImageView, 0, 0, 1, 1);
+
         Server->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Server);
         menubar->setObjectName(QString::fromUtf8("menubar"));
